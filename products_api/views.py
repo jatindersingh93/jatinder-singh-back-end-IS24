@@ -15,7 +15,7 @@ from datetime import datetime
 import json
 from rest_framework.views import APIView
 
-
+# Main Class to handle Products API CRUD calls
 class ProductsView(APIView):
     def get_serializer(self, *args, **kwargs):
         """
@@ -47,14 +47,12 @@ class ProductsView(APIView):
                 product_serializer = ProductsSerializer(data=product_data)
                 if product_serializer.is_valid():
                     product_serializer.save()
-                    #import pdb; pdb.set_trace() 
-                    #problem is here we needed to return data so i can be parsed.
                     return JsonResponse(product_serializer.data, status=status.HTTP_201_CREATED) 
                 return JsonResponse(product_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
             except  Exception as e:
                 return JsonResponse(e, status=status.HTTP_400_BAD_REQUEST, safe=False)        
     
-    # Rest View to handle PUT, PATCH and DELETE calls
+    # @product_detail Rest View to handle PUT, PATCH and DELETE calls
     @api_view(['GET', 'PUT', 'PATCH','DELETE'])
     def product_detail(request, pk):
         try: 
@@ -73,4 +71,4 @@ class ProductsView(APIView):
                         return JsonResponse(product_data, status=status.HTTP_201_CREATED, safe=False) 
                     return JsonResponse(product_serializer.errors, status=status.HTTP_400_BAD_REQUEST)            
         except Exception as e:
-            return JsonResponse(e, status=status.HTTP_400_BAD_REQUEST)  
+            return JsonResponse(e, status=status.HTTP_400_BAD_REQUEST) 
