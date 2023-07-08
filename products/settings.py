@@ -26,6 +26,10 @@ SECRET_KEY = 'xi_%o23opjs89xtf@y5vpgj#94^+#^=e+9b$0!dxhfqambk$@#'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000"
+]
+CORS_ALLOW_CREDENTIALS = True
 
 
 # Application definition
@@ -38,15 +42,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'products_api',
+    'rest_enumfield',
     'rest_framework',
     'rest_framework_swagger',
     'drf_yasg',
-    'utils',    
+    'utils',
+    'corsheaders'    
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',

@@ -1,6 +1,5 @@
 from enum import IntEnum
 
-# Enum for product sizes
 class ProductSizes(IntEnum):
   Small = 1
   medium = 2

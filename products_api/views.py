@@ -54,7 +54,7 @@ class ProductsView(APIView):
     
     # @product_detail Rest View to handle PUT, PATCH and DELETE calls
     @api_view(['GET', 'PUT', 'PATCH','DELETE'])
-    def product_detail(request, pk):
+    def product_detail(request, pk): 
         try: 
             product = ProductsModel.objects.get(pk=pk)
             if request.method == 'GET':             
@@ -63,7 +63,7 @@ class ProductsView(APIView):
             elif request.method == 'DELETE': 
                     product.delete() 
                     return JsonResponse({'message': 'Product was deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)        
-            elif request.method == 'PATCH': 
+            elif request.method == 'PUT':                   
                     product_data = JSONParser().parse(request)         
                     product_serializer = ProductsSerializer(data=product_data)                
                     if product_serializer.is_valid():
