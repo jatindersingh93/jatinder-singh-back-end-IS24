@@ -25,7 +25,7 @@ class ProductsView(APIView):
         serializer_class = self.get_serializer_class()
         kwargs['context'] = self.get_serializer_context()
         return serializer_class(*args, **kwargs)
-        
+
     # @product_list will handle GET and POST calls
     @api_view(['GET', 'POST'])
     def products_list(request):        
@@ -43,8 +43,7 @@ class ProductsView(APIView):
                 return JsonResponse(e, status=status.HTTP_400_BAD_REQUEST)
         elif request.method == 'POST':  
             try:
-                product_data = JSONParser().parse(request)
-                product_serializer = ProductsSerializer(data=product_data)
+                product_serializer = ProductsSerializer(data=request.data)
                 if product_serializer.is_valid():
                     product_serializer.save()
                     return JsonResponse(product_serializer.data, status=status.HTTP_201_CREATED) 
@@ -54,7 +53,7 @@ class ProductsView(APIView):
     
     # @product_detail Rest View to handle PUT, PATCH and DELETE calls
     @api_view(['GET', 'PUT', 'PATCH','DELETE'])
-    def product_detail(request, pk): 
+    def product_detail(request, pk):              
         try: 
             product = ProductsModel.objects.get(pk=pk)
             if request.method == 'GET':             
@@ -63,9 +62,9 @@ class ProductsView(APIView):
             elif request.method == 'DELETE': 
                     product.delete() 
                     return JsonResponse({'message': 'Product was deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)        
-            elif request.method == 'PUT':                   
+            elif request.method == 'PUT':             
                     product_data = JSONParser().parse(request)         
-                    product_serializer = ProductsSerializer(data=product_data)                
+                    product_serializer = ProductsSerializer(data=product_data)
                     if product_serializer.is_valid():
                         instance = product_serializer.update(product, product_data)
                         return JsonResponse(product_data, status=status.HTTP_201_CREATED, safe=False) 

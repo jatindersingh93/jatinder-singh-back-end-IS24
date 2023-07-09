@@ -5,10 +5,10 @@ from utils.models import ProductSizes
 
 # Serialize Products API for CRUD calls
 class ProductsSerializer(serializers.ModelSerializer):
-    size = serializers.SerializerMethodField()
+    size_display = serializers.SerializerMethodField(read_only=True)
     class Meta:
         model = ProductsModel
         fields = '__all__'
     
-    def get_size(self, instance):        
+    def get_size_display(self, instance):
         return ProductSizes(instance.size).name

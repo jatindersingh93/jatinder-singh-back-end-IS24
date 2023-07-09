@@ -2,7 +2,7 @@ from enum import IntEnum
 
 class ProductSizes(IntEnum):
   Small = 1
-  medium = 2
+  Medium = 2
   Large = 3
   
   @classmethod
