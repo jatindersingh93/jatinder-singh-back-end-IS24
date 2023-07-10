@@ -10,8 +10,8 @@ COPY requirements.txt /code/back-end-products
 # Build psycopg2-binary from source -- add required required dependencies
 RUN apk add --no-cache --virtual .build-deps \
     ca-certificates gcc postgresql-dev linux-headers musl-dev \
-    libffi-dev jpeg-dev zlib-dev \
-    && pip install -r requirements.txt
+    libffi-dev jpeg-dev zlib-dev postgresql-client \
+    && pip install -r requirements.txt 
 
 COPY . /code/back-end-products
 

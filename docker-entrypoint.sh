@@ -10,5 +10,11 @@ done
 
 echo "Django docker is fully configured successfully."
 
+echo "Restore Database from the backup"
+
+export PGPASSWORD='postgres' && pg_restore -h db -p 5432 -U postgres -d products db.sql
+
+echo "Restore Completed"
+
 exec "$@"
 view raw
