@@ -25,7 +25,7 @@ SECRET_KEY = 'xi_%o23opjs89xtf@y5vpgj#94^+#^=e+9b$0!dxhfqambk$@#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000"
 ]
@@ -88,11 +88,11 @@ WSGI_APPLICATION = 'products.wsgi.application'
 DATABASES = {
     'default': {
         "ENGINE": "django.db.backends.postgresql",
-        'NAME': 'product',
-        'USER': 'posadmin',
-        'PASSWORD': '*XbSr;3%70NBIKh',
-        'HOST': 'localhost',
-        'PORT': '5431',
+        'NAME': 'products',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'db',
+        'PORT': '5432',
     }
 }
 
