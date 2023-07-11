@@ -27,6 +27,7 @@ from drf_yasg import openapi
 
 from drf_yasg import openapi
 
+# Setup Swagger view
 schema_view = get_schema_view(
     openapi.Info(
         title="Product API",
@@ -38,14 +39,15 @@ schema_view = get_schema_view(
 
 
 urlpatterns = [
-    path('', lambda req: redirect('doc/')),
+    path('', lambda req: redirect('doc/')),    
     re_path(r'^doc(?P<format>\.json|\.yaml)$',
             schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path('doc/', schema_view.with_ui('swagger', cache_timeout=0),
-         name='schema-swagger-ui'),
+         name='schema-swagger-ui'),     #swagger
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0),
-         name='schema-redoc'),
-    path('admin/', admin.site.urls),
-    url(r'^api/products$', ProductsView.products_list),
-    url(r'^api/products/(?P<pk>[0-9]+)$', ProductsView.product_detail),
+         name='schema-redoc'), #swagger
+
+    path('admin/', admin.site.urls), #admin
+    url(r'^api/products$', ProductsView.products_list),  #product listing
+    url(r'^api/products/(?P<pk>[0-9]+)$', ProductsView.product_detail), # GET, PUT, POST, DELETE
 ]

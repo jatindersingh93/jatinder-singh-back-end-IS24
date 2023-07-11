@@ -32,7 +32,7 @@ Any schema and data migration accross stabilized development releases should be 
 Database migration and seeding is performed usingh docker-entrypoint.sh in container after postgres is completed.
 
 # Docker
-Dockerfile is for running containerize application using 3.6-alpine for lightweight OS
+Dockerfile is for running containerize application using 3.6-alpine for lightweight container app.
 
 Docker Entrypoint is configured to perform database migration and seeding using db.sql file.
 
@@ -72,6 +72,9 @@ And navigate to `http://127.0.0.1:8000/`.
 Swagger is installed to test and document RESTAPI and can be accessed using following link in container installation
 
 `http://localhost:8000/doc/`
+
+`http://localhost:8000/redoc/`
+
 
 Products can be listed at http://localhost:8000/api/products and following link for POST, PUT, DELETE
 http://localhost:8000/api/products/:ID

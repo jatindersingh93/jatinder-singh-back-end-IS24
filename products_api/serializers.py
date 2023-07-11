@@ -10,5 +10,6 @@ class ProductsSerializer(serializers.ModelSerializer):
         model = ProductsModel
         fields = '__all__'
     
+    # Read only to display enum name
     def get_size_display(self, instance):
         return ProductSizes(instance.size).name
