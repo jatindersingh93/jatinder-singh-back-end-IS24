@@ -1,7 +1,13 @@
 # IS24 Full Stack Developer Technical Test
 
 # Introduction
-This is a RESTFUL api app running using Django 1.3.6 and Python 3.6.5. Running locally will require python 3.6.5 and pip installed on machine.
+This is a RESTFUL api app running using Django 3.1.2 and Python 3.6.5. Running locally will require python 3.6.5 and pip installed on machine.
+
+# Technology
+ - Python@3.6.5
+ - Django@3.1.2
+ - djangorestframework@3.14
+ - psycopg2-binary@2.9.6
 
 ## Structure
 
