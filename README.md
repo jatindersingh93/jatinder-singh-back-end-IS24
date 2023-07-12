@@ -5,6 +5,7 @@ This is a RESTFUL api app running using Django 3.1.2 and Python 3.6.5. Running l
 
 # Technology
  - Python@3.6.5
+ - pip
  - Django@3.1.2
  - djangorestframework@3.14
  - psycopg2-binary@2.9.6

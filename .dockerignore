@@ -1,3 +1,6 @@
 Dockerfile
 env
 .env
+.git
+.DS_Store
+.python-version
