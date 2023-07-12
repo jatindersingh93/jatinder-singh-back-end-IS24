@@ -9,6 +9,7 @@ This is a RESTFUL api app running using Django 3.1.2 and Python 3.6.5. Running l
  - Django@3.1.2
  - djangorestframework@3.14
  - psycopg2-binary@2.9.6
+ - Postgres@14.1
 
 ## Structure
 
@@ -36,12 +37,12 @@ If front end is not able to access APIs, make sure to adjust `ALLOWED_HOSTS` & `
 
 Any schema and data migration accross stabilized development releases should be done using default django migration tool.
 
-Database migration and seeding is performed usingh docker-entrypoint.sh in container after postgres is completed.
+Database migration and seeding is performed using `docker-entrypoint.sh` in container after postgres installation is completed.
 
 # Docker
 Dockerfile is for running containerize application using 3.6-alpine for lightweight container app.
 
-Docker Entrypoint is configured to perform database migration and seeding using db.sql file.
+Docker Entrypoint is configured to perform database migration and seeding using `db.sql` file.
 
 # Local Installation/setup
 The first thing to do is to clone the repository:

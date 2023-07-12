@@ -32,11 +32,9 @@ class ProductsView(APIView):
         if request.method == 'GET':        
             try: 
                 products = ProductsModel.objects.all()
-                
                 title = request.GET.get('name', None)
                 if title is not None:
                     products = products.filter(title__icontains=title)
-                
                 products_serializer = ProductsSerializer(products, many=True)
                 return JsonResponse(products_serializer.data, safe=False)
             except Exception as e:
